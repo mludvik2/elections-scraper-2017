@@ -4,16 +4,19 @@
 #Data from public elections is open, but you should scrape responsibly.
 ##can you see this?
 
+
 """project_3.py: 
 third project for Engeto Online Python Academy
 
 Author: Michaela Papadimitriu Ludvikova
 email: mludvik2@yahoo.com
 """
-
+#update the requirements
 from bs4 import BeautifulSoup
 import requests
 import sys
+from urllib.parse import urljoin
+import csv
 
 def parse_args(argv):
     """Checks if the user gives 2 arguments:
@@ -29,10 +32,8 @@ def parse_args(argv):
     
     url = argv[1]
     filename = argv[2]
-### we want not both to have an issue but if one then other is ok
     if not url.startswith("http") or not filename.endswith(".csv"):
-        print("Error: The first argument must be a web link (URL).")
-        print("Error: The second argument must end with .csv")
+        print("Error: Please give a valid URL and a file ending with .csv.")
         sys.exit(1)
 
     return url, filename
@@ -48,16 +49,150 @@ def download_page(url):
 
     return call_server.text
 
+def find_all_links(html, base_url):
+    """
+    Finds all municipal rows in the main table
+    and returns a list of dictionaries with code, location and link
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    rows = soup.find_all("tr")[2:] # skip first 2 header rows
+
+    all_links = []
+
+    for row in rows:
+        cells = row.find_all("td")
+        if len(cells) > 0:
+            number_link = cells[0].find("a")
+            location = cells[1].get_text(strip=True)
+
+            if number_link:
+                detail_href = number_link.get("href")
+                full_link = urljoin(base_url, detail_href)
+                code = number_link.get_text(strip=True)
+
+                all_links.append({
+                    "code": code,
+                    "location": location,
+                    "link": full_link
+            })
+
+    print(f"Found {len(all_links)} towns.")
+    return all_links
+
+#Base URL to build full links
+
+# Send request and parse HTML
+def scrape_town_results(url):
+    """Gets basic election results (registered, envelopes, valid, parties) from one town page"""
+    print(f"scraping:", {url})
+
+    #download the page
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Error loading page:", url)
+        return None
+    
+    #parse the page
+    soup = BeautifulSoup(response.text, "html.parser")
+    #find numbers of voters, envelopes, valid votes
+    #these are inside <td> cells on the first table
+    tables = soup.find_all("table")
+    first_table = tables[0]
+    all_td = first_table.find_all("td")
+
+    try:
+        registered = all_td[3].get_text(strip=True)
+        envelopes = all_td[4].get_text(strip=True)
+        valid = all_td[7].get_text(strip=True)
+    except IndexError:
+        print("Warning: could not read vote summary for ", url)
+        return None
+
+    #Find all political parties and their votes
+
+    parties = {}
+    party_tables = soup.find_all("table", {"class": "table"})
+    for table in party_tables:
+        rows = table.find_all("tr")[2:]  #skip 2 header rows
+        for row in rows:
+            cells = row.find_all("td")
+            if len(cells) >= 3:
+                party_name = cells[1].get_text(strip=True)
+                votes = cells[2].get_text(strip=True)
+                if party_name:
+                    parties[party_name] = votes
+
+    #return the results as a dictionary
+    return{
+        "registered": registered,
+        "envelopes": envelopes,
+        "valid": valid,
+        "parties": parties
+    }
+
+#save everything to csv
+def save_to_csv(data, filename):
+    """Save results to a CSV file"""
+    #get all the unique party names across all towns
+    all_parties = []
+    for town in data:
+        for party in town["parties"].keys():
+            if party not in all_parties:
+                all_parties.append(party)
+    all_parties.sort()
+
+    #create csv header
+    header = ["Code", "Town", "Registered", "Envelopes", "Valid"] + all_parties
+
+    with open(filename, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+
+        for town in data:
+            row = [
+                town["code"],
+                town["location"],
+                data["registerd"],
+                data["envelopes"],
+                data["valid"],
+                data["parties"]
+                ]
+            for party in all_parties:
+                if party in town["parties"]:
+                    row.append(town["parties"][party])
+                else:
+                    row.append("0")
+        writer.writerow(row)
+    print(f"Data saved successfully to '{filename}'")
+
 if __name__ == "__main__":
     url, filename = parse_args(sys.argv)
-    #print("URL:", url)
-    #print("File name:", filename)
+    base_url = "https://www.volby.cz/pls/ps2017nss/" 
+    
+   
     #download page
     html = download_page(url)
-    #parse with beautifulsoup
-    soup = BeautifulSoup(html, "html.parser")
-    #just show the page title to test
-    title = soup.find("title").get_text()
-    print("Page title:", title)
+    #find links
+    links = find_all_links(html, base_url)
+
+     # Test: scrape first 3 towns only
+    all_data = []
+    for town in links:
+        print(f"{town['location']} ({town['code']})")
+        result = scrape_town_results(town["link"])
+
+        if result is not None:
+            town_data = {
+                "code": town["code"],
+                "location": town["location"],
+                "registered": result["registered"],
+                "envelopes": result["registered"],
+                "valid": result["valid"],
+                "parties": result["parties"]
+            }
+            all_data.append(town_data)
+                
+    save_to_csv(all_data, filename)
+
 
 
