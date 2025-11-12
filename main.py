@@ -20,7 +20,7 @@ import csv
 
 def parse_args(argv):
     """Checks if the user gives 2 arguments:
-    1. The district URL
+    1. The URL
     2. The name of the output CSV file
     Returns both as a tuple (url, filename).
     If something is wrong , it prints out an error and stops the program.
@@ -76,7 +76,7 @@ def find_all_links(html, base_url):
                     "link": full_link
             })
 
-    print(f"Found {len(all_links)} towns.")
+    
     return all_links
 
 #Base URL to build full links
@@ -101,9 +101,9 @@ def scrape_town_results(url):
     all_td = first_table.find_all("td")
 
     try:
-        registered = all_td[3].get_text(strip=True)
-        envelopes = all_td[4].get_text(strip=True)
-        valid = all_td[7].get_text(strip=True)
+        registered = "".join(all_td[3].get_text(strip=True).split())
+        envelopes = "".join(all_td[4].get_text(strip=True).split())
+        valid = "".join(all_td[7].get_text(strip=True).split())
     except IndexError:
         print("Warning: could not read vote summary for ", url)
         return None
@@ -118,8 +118,9 @@ def scrape_town_results(url):
             cells = row.find_all("td")
             if len(cells) >= 3:
                 party_name = cells[1].get_text(strip=True)
-                votes = cells[2].get_text(strip=True)
-                if party_name:
+                votes = "".join(cells[2].get_text(strip=True).split())
+
+                if party_name and party_name[0].isalpha():
                     parties[party_name] = votes
 
     #return the results as a dictionary
@@ -139,30 +140,28 @@ def save_to_csv(data, filename):
         for party in town["parties"].keys():
             if party not in all_parties:
                 all_parties.append(party)
-    all_parties.sort()
 
     #create csv header
     header = ["Code", "Town", "Registered", "Envelopes", "Valid"] + all_parties
 
-    with open(filename, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
+    with open(filename, "w", newline="", encoding="utf-8-sig") as f:
+        writer = csv.writer(f, delimiter=";")
         writer.writerow(header)
 
         for town in data:
             row = [
                 town["code"],
                 town["location"],
-                data["registerd"],
-                data["envelopes"],
-                data["valid"],
-                data["parties"]
-                ]
+                town["registered"],
+                town["envelopes"],
+                town["valid"]
+            ]
             for party in all_parties:
                 if party in town["parties"]:
                     row.append(town["parties"][party])
                 else:
                     row.append("0")
-        writer.writerow(row)
+            writer.writerow(row)
     print(f"Data saved successfully to '{filename}'")
 
 if __name__ == "__main__":
@@ -174,6 +173,7 @@ if __name__ == "__main__":
     html = download_page(url)
     #find links
     links = find_all_links(html, base_url)
+    
 
      # Test: scrape first 3 towns only
     all_data = []
@@ -186,13 +186,14 @@ if __name__ == "__main__":
                 "code": town["code"],
                 "location": town["location"],
                 "registered": result["registered"],
-                "envelopes": result["registered"],
+                "envelopes": result["envelopes"],
                 "valid": result["valid"],
                 "parties": result["parties"]
             }
             all_data.append(town_data)
                 
     save_to_csv(all_data, filename)
+    print(f"\n Saved {len(all_data)} towns to {filename}")
 
 
 
