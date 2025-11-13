@@ -67,9 +67,9 @@ Before saving the results:
 pip install requests beautifulsoup4
 
 ### Author
-**Michaela Papadimitriu Ludvikova**
-**email:** mludvik2@yahoo.com
-Engeto Online Python Academy — Project 3
+**Michaela Papadimitriu Ludvikova**<br>
+**email:** mludvik2@yahoo.com<br>
+Engeto Online Python Academy — Project 3<br>
 
 
 
