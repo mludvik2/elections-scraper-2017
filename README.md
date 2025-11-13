@@ -51,18 +51,18 @@ Before saving the results:
 - Extra spaces in numbers (e.g. 1 546) are automatically removed → 1546
 - Missing values for a party are replaced by "0"
 - The CSV file uses the semicolon (;) as a delimiter for better compatibility with Excel
-- Czech characters are preserved using UTF-8 with BOM (utf-8-sig)
+- Czech characters are preserved using utf-8-sig
 
 ## Ethical and Legal Notice
-- The scraper follows volby.cz’s terms and robots.txt.
+- The scraper follows www.volby.cz’s terms and robots.txt.
 - It sends a small number of requests and includes respectful pauses between them if needed.
 - The scraped data comes from publicly available election results and is used strictly for educational purposes.
 
 ## Requirements
 - Python 3.x
 - Installed libraries:
--- requests
--- beautifulsoup4
+ - requests
+ - beautifulsoup4
 
 ### Installation:
 pip install requests beautifulsoup4
