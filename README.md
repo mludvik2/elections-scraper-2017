@@ -11,14 +11,23 @@ This project is a Python web scraper that downloads and processes results from t
 It retrieves data from the official election website volby.cz and saves the results for all municipalities in a selected district into a CSV file.
 
 The output file contains the following information for each municipality:
-
 - Municipality code
 - Municipality name
 - Number of registered voters
 - Number of envelopes issued
 - Number of valid votes
 - Number of votes for each political party
-- How to Run the Program
+
+# How to Run the Program
+The program is executed from the command line with two arguments:
+(command line in python or open virtual environment??????????)
+
+python project_3.py <URL> <output_file.csv>
+
+## Example Command
+python project_3.py "https://www.volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xnumnuts=7101" "results_jesenik.csv"
+
+## Command Line Arguments
 
 # Structure:
 
