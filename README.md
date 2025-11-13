@@ -1,11 +1,11 @@
-Czech Election Results Scraper
+# Czech Election Results Scraper
 
-Author: Michaela Papadimitriu Ludvikova
-Email: mludvik2@yahoo.com
+**Author:** Michaela Papadimitriu Ludvikova
+**Email:** mludvik2@yahoo.com
 
-Course: Engeto Online Python Academy — Project 3
+**Course:** Engeto Online Python Academy — Project 3
 
-# Project Description
+## Project Description
 
 This project is a **Python web scraper** that downloads and processes results from the **2017 Czech Parliamentary Elections**.
 It retrieves data from the official election website volby.cz and saves the results for all municipalities in a selected district into a **CSV file**.
@@ -18,7 +18,7 @@ The output file contains the following information for each municipality:
 - Number of valid votes
 - Number of votes for each political party
 
-# How to Run the Program
+## How to Run the Program
 The program is executed from the command line with two arguments:
 (command line in python or open virtual environment??????????)
 
@@ -31,7 +31,7 @@ python project_3.py "https://www.volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xnumnuts
 <URL> Link to the district overview page from volby.cz
 <output_file.csv> Name of the CSV file where results will be saved
 
-## Example Output
+### Example Output
 After running the program, a CSV file is created — for example:
 **File name:** results_jesenik.csv
 **Structure of the file**:
@@ -42,34 +42,34 @@ Code;Town;Registered;Envelopes;Valid;Občanská demokratická strana;...;ANO 201
 
 Each row represents one municipality, and every political party appears as a separate column.
 
-## Project Structure
+### Project Structure
 project_3.py      # main program file
 README.md         # this documentation file
 
-## Data Cleaning
+### Data Cleaning
 Before saving the results:
 - Extra spaces in numbers (e.g. 1 546) are automatically removed → 1546
 - Missing values for a party are replaced by "0"
 - The CSV file uses the **semicolon (;)** as a delimiter for better compatibility with Excel
 - Czech characters are preserved using **utf-8-sig**
 
-## Ethical and Legal Notice
+### Ethical and Legal Notice
 - The scraper follows www.volby.cz’s terms and robots.txt.
 - It sends a small number of requests and includes respectful pauses between them if needed.
 - The scraped data comes from **publicly available election results** and is used strictly for **educational purposes**.
 
-## Requirements
+### Requirements
 - Python 3.x
 - Installed libraries:
 	- requests
 	- beautifulsoup4
 
-### Installation:
+#### Installation:
 pip install requests beautifulsoup4
 
-## Author
+### Author
 **Michaela Papadimitriu Ludvikova**
-mludvik2@yahoo.com
+**email:** mludvik2@yahoo.com
 Engeto Online Python Academy — Project 3
 
 
