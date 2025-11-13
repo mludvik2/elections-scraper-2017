@@ -2,7 +2,6 @@
 #Check and respect the site’s robots.txt.
 #Don’t send too many requests too fast.
 #Data from public elections is open, but you should scrape responsibly.
-##can you see this?
 
 
 """project_3.py: 
@@ -11,7 +10,6 @@ third project for Engeto Online Python Academy
 Author: Michaela Papadimitriu Ludvikova
 email: mludvik2@yahoo.com
 """
-#update the requirements
 from bs4 import BeautifulSoup
 import requests
 import sys
@@ -83,7 +81,10 @@ def find_all_links(html, base_url):
 
 # Send request and parse HTML
 def scrape_town_results(url):
-    """Gets basic election results (registered, envelopes, valid, parties) from one town page"""
+    """
+    Gets basic election results (registered, envelopes, valid, parties)
+     from one town page.
+    """
     print(f"scraping:", {url})
 
     #download the page

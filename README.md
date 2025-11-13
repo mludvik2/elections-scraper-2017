@@ -1,12 +1,76 @@
-\# Python 3 project
+Czech Election Results Scraper
 
+Author: Michaela Papadimitriu Ludvikova
+Email: mludvik2@yahoo.com
 
+Course: Engeto Online Python Academy — Project 3
+
+# Project Description
+
+This project is a Python web scraper that downloads and processes results from the 2017 Czech Parliamentary Elections.
+It retrieves data from the official election website volby.cz and saves the results for all municipalities in a selected district into a CSV file.
+
+The output file contains the following information for each municipality:
+
+Municipality code
+
+Municipality name
+
+Number of registered voters
+
+Number of envelopes issued
+
+Number of valid votes
+
+Number of votes for each political party
+
+How to Run the Program
 
 Structure:
 
 * main.py
 
 
+write info for people who do or do not have: delimiter ","
+  with open(filename, "w", newline="", encoding="utf-8-sig") as f:
+        writer = csv.writer(f, delimiter=";"
+
+
+
+
+\#Ethical reminder
+
+\#Check and respect the site’s robots.txt.
+
+\#Don’t send too many requests too fast.
+
+\#Data from public elections is open, but you should scrape responsibly.
+
+
+
+
+
+rows = soup.find\_all("tr")\[2:] # skip first 2 header rows
+
+
+
+
+
+\#Base URL to build full links
+
+
+
+\# Send request and parse HTML
+
+
+
+&nbsp;   #find numbers of voters, envelopes, valid votes
+
+&nbsp;   #these are inside <td> cells on the first table
+
+
+
+&nbsp;   #return the results as a dictionary
 
 
 
