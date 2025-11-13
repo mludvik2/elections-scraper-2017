@@ -7,8 +7,8 @@ Course: Engeto Online Python Academy — Project 3
 
 # Project Description
 
-This project is a Python web scraper that downloads and processes results from the 2017 Czech Parliamentary Elections.
-It retrieves data from the official election website volby.cz and saves the results for all municipalities in a selected district into a CSV file.
+This project is a **Python web scraper** that downloads and processes results from the **2017 Czech Parliamentary Elections**.
+It retrieves data from the official election website volby.cz and saves the results for all municipalities in a selected district into a **CSV file**.
 
 The output file contains the following information for each municipality:
 - Municipality code
@@ -24,17 +24,17 @@ The program is executed from the command line with two arguments:
 
 python project_3.py <URL> <output_file.csv>
 
-## Example Command
+**Example Command**
 python project_3.py "https://www.volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xnumnuts=7101" "results_jesenik.csv"
 
-## Command Line Arguments
+**Command Line Arguments**
 <URL> Link to the district overview page from volby.cz
 <output_file.csv> Name of the CSV file where results will be saved
 
 ## Example Output
 After running the program, a CSV file is created — for example:
-#### File name: results_jesenik.csv
-#### Structure of the file:
+**File name:** results_jesenik.csv
+**Structure of the file**:
 Code;Town;Registered;Envelopes;Valid;Občanská demokratická strana;...;ANO 2011;...
 523917;Bělá pod Pradědem;1546;945;938;77;...;331;...
 524891;Bernartice;703;344;343;24;...;149;...
@@ -50,25 +50,25 @@ README.md         # this documentation file
 Before saving the results:
 - Extra spaces in numbers (e.g. 1 546) are automatically removed → 1546
 - Missing values for a party are replaced by "0"
-- The CSV file uses the semicolon (;) as a delimiter for better compatibility with Excel
-- Czech characters are preserved using utf-8-sig
+- The CSV file uses the **semicolon (;)** as a delimiter for better compatibility with Excel
+- Czech characters are preserved using **utf-8-sig**
 
 ## Ethical and Legal Notice
 - The scraper follows www.volby.cz’s terms and robots.txt.
 - It sends a small number of requests and includes respectful pauses between them if needed.
-- The scraped data comes from publicly available election results and is used strictly for educational purposes.
+- The scraped data comes from **publicly available election results** and is used strictly for **educational purposes**.
 
 ## Requirements
 - Python 3.x
 - Installed libraries:
- - requests
- - beautifulsoup4
+	- requests
+	- beautifulsoup4
 
 ### Installation:
 pip install requests beautifulsoup4
 
 ## Author
-#### Michaela Papadimitriu Ludvikova
+**Michaela Papadimitriu Ludvikova**
 mludvik2@yahoo.com
 Engeto Online Python Academy — Project 3
 
