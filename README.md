@@ -7,7 +7,7 @@
 ## Project Description
 
 This project is a **Python web scraper** that downloads and processes results from the **2017 Czech Parliamentary Elections**.
-It retrieves data from the official election website https://www.volby.cz/ and saves the results for all municipalities in a selected district into a **CSV file**.
+It retrieves data from the official election website [volby.cz](https://www.volby.cz/) and saves the results for all municipalities in a selected district into a **CSV file**.
 
 The output file contains the following information for each municipality:
 - Municipality code
@@ -53,7 +53,7 @@ Before saving the results:
 - Czech characters are preserved using **utf-8-sig**
 
 ### Ethical and Legal Notice
-- The scraper follows www.volby.cz’s terms and robots.txt.
+- The scraper follows [volby.cz](https://www.volby.cz/)’s terms and robots.txt.
 - It sends a small number of requests and includes respectful pauses between them if needed.
 - The scraped data comes from **publicly available election results** and is used strictly for **educational purposes**.
 
