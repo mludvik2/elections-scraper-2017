@@ -7,28 +7,32 @@
 ## Project Description
 
 This project is a **Python web scraper** that downloads and processes results from the **2017 Czech Parliamentary Elections**.
-It retrieves data from the official election website [volby.cz](https://www.volby.cz/) and saves the results for all municipalities in a selected district into a **CSV file**.
+It retrieves data from the official election website [volby.cz](https://www.volby.cz/) and saves the results for all municipalities in a selected district into a **CSV file**, which you can open in Excel.
 
 The output file contains the following information for each municipality:
-- Municipality code
-- Municipality name
+- Town code
+- Town name
 - Number of registered voters
 - Number of envelopes issued
 - Number of valid votes
 - Number of votes for each political party
 
 ## How to Run the Program
-The program is executed from the command line with two arguments:
-(command line in python or open virtual environment??????????)
-
-python project_3.py <URL> <output_file.csv>
-
-**Example Command**
-python project_3.py "https://www.volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xnumnuts=7101" "results_jesenik.csv"
+**Step 1: Open the command line (CMD or Terminal)**
+**Step 2: Go to the folder where your file is saved**
+For example:
+cd C:\Users\YourName\Documents\elections-scraper-2017
+**Step 3: Run this command**
+python main.py <URL> <output_file.csv>
+python main.py "https://www.volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xnumnuts=7101" "results_jesenik.csv"
 
 **Command Line Arguments**
-<URL> Link to the district overview page from volby.cz
+<URL> Link to the district overview page from volby.cz(do not use a single town page — it should be a list of towns).
 <output_file.csv> Name of the CSV file where results will be saved
+
+After the program finishes, you’ll see a message like:
+Data saved successfully to 'results_jesenik.csv'
+
 
 ### Example Output
 After running the program, a CSV file is created — for example:
@@ -40,10 +44,18 @@ Code;Town;Registered;Envelopes;Valid;Občanská demokratická strana;...;ANO 201
 ...
 
 Each row represents one municipality, and every political party appears as a separate column.
+You can open this file in Excel to view and analyze the results.
 
-### Project Structure
-project_3.py      # main program file
-README.md         # this documentation file
+### What you need
+- Python 3 installed
+- The following libraries:
+	- requests
+	- beautifulsoup4
+in command prompt or terminalpip install requests beautifulsoup4
+
+
+main_3.py      # main program file
+README.md      # this documentation file
 
 ### Data Cleaning
 Before saving the results:
@@ -53,7 +65,7 @@ Before saving the results:
 - Czech characters are preserved using **utf-8-sig**
 
 ### Ethical and Legal Notice
-- The scraper follows [volby.cz](https://www.volby.cz/)’s terms and robots.txt.
+- The scraper follows [volby.cz](https://www.volby.cz/)’s terms and robots.txt.**(Respect the website’s rules)**
 - It sends a small number of requests and includes respectful pauses between them if needed.
 - The scraped data comes from **publicly available election results** and is used strictly for **educational purposes**.
 
