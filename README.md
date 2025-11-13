@@ -40,15 +40,15 @@ The output file contains the following information for each municipality:
 Move that folder somewhere easy to find, such as: "C:\Users\YourName\Documents\elections-scraper-2017"
 
 **Option 2: Clone using Git**<br>
-If you already have Git installed and know how to use the terminal, you can instead run:
+If you already have Git installed and know how to use the terminal, you can instead run:<br>
 git clone https://github.com/mludvik2/elections-scraper-2017.git
 
 **Step 2: Open a terminal**<br>
-Go to where you moved the file to eg. "C:\Users\YourName\Documents\elections-scraper-2017"
+Go to where you moved the file to eg. "C:\Users\YourName\Documents\elections-scraper-2017"<br>
 Type in **"CMD"** where your file is listed and hit enter
 
 **Step 3: Create and activate a virtual environment**<br>
-add in code separately:<br>
+add in code **separately**:<br>
 python -m venv .venv<br>
 .venv\Scripts\activate<br>
 
@@ -61,7 +61,7 @@ This installs the libraries the project needs (requests and beautifulsoup4).
 
 **Step 5: Run the Program**<br>
 Use this command format:<br>
-python main.py "<URL>" "<output_filename.csv>"<br>
+python main.py "<URL>" "output_filename.csv"<br>
 
 For example:<br>
 python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101" "results.csv"
