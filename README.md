@@ -2,7 +2,6 @@
 
 **Author:** Michaela Papadimitriu Ludvikova
 **Email:** mludvik2@yahoo.com
-
 **Course:** Engeto Online Python Academy — Project 3
 
 ## Project Description
