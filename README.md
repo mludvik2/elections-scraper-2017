@@ -32,7 +32,9 @@ python project_3.py "https://www.volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xnumnuts
 <output_file.csv> Name of the CSV file where results will be saved
 
 ## Example Output
-## Structure of the file:
+After running the program, a CSV file is created — for example:
+#### File name: results_jesenik.csv
+#### Structure of the file:
 Code;Town;Registered;Envelopes;Valid;Občanská demokratická strana;...;ANO 2011;...
 523917;Bělá pod Pradědem;1546;945;938;77;...;331;...
 524891;Bernartice;703;344;343;24;...;149;...
@@ -40,9 +42,42 @@ Code;Town;Registered;Envelopes;Valid;Občanská demokratická strana;...;ANO 201
 
 Each row represents one municipality, and every political party appears as a separate column.
 
-## Example Output
-After running the program, a CSV file is created — for example:
-File name: results_jesenik.csv
+## Project Structure
+project_3.py      # main program file
+README.md         # this documentation file
+
+## Data Cleaning
+Before saving the results:
+- Extra spaces in numbers (e.g. 1 546) are automatically removed → 1546
+- Missing values for a party are replaced by "0"
+- The CSV file uses the semicolon (;) as a delimiter for better compatibility with Excel
+- Czech characters are preserved using UTF-8 with BOM (utf-8-sig)
+
+## Ethical and Legal Notice
+- The scraper follows volby.cz’s terms and robots.txt.
+- It sends a small number of requests and includes respectful pauses between them if needed.
+- The scraped data comes from publicly available election results and is used strictly for educational purposes.
+
+## Requirements
+- Python 3.x
+- Installed libraries:
+-- requests
+-- beautifulsoup4
+
+### Installation:
+pip install requests beautifulsoup4
+
+## Author
+#### Michaela Papadimitriu Ludvikova
+mludvik2@yahoo.com
+Engeto Online Python Academy — Project 3
+
+
+
+
+
+
+
 
 ### Structure of the file:
 
