@@ -12,21 +12,15 @@ It retrieves data from the official election website volby.cz and saves the resu
 
 The output file contains the following information for each municipality:
 
-Municipality code
+- Municipality code
+- Municipality name
+- Number of registered voters
+- Number of envelopes issued
+- Number of valid votes
+- Number of votes for each political party
+- How to Run the Program
 
-Municipality name
-
-Number of registered voters
-
-Number of envelopes issued
-
-Number of valid votes
-
-Number of votes for each political party
-
-How to Run the Program
-
-Structure:
+# Structure:
 
 * main.py
 
