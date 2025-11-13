@@ -61,14 +61,14 @@ This installs the libraries the project needs (requests and beautifulsoup4).
 
 **Step 5: Run the Program**<br>
 Use this command format:<br>
-python main.py "<URL>" "output_filename.csv"<br>
+python main.py "district page URL" "output_filename.csv"<br>
 
 For example:<br>
 python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101" "results.csv"
 
 **Command Line Arguments**<br>
-<URL> The first part is the election district URL (with many towns). Do not use a single town page — it should be a list of towns.<br>
-<output_file.csv> The second part is the CSV file name you want to create.<br>
+District page URL: The first part is the election district URL (with many towns). Do not use a single town page — it should be a list of towns.<br>
+Output_file.csv: The second part is the CSV file name you want to create.<br>
 
 **Step 6: Wait for the scraper to finish**<br>
 After the program finishes, you’ll see a message like:<br>
