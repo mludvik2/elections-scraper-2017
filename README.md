@@ -1,8 +1,8 @@
 # Czech Election Results Scraper
 
-<p>**Author:** Michaela Papadimitriu Ludvikova<br>
+**Author:** Michaela Papadimitriu Ludvikova<br> 
 **Email:** mludvik2@yahoo.com<br>
-**Course:** Engeto Online Python Academy — Project 3<p>
+**Course:** Engeto Online Python Academy — Project 3<br> 
 
 ## Project Description
 
