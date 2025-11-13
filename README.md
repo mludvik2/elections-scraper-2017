@@ -9,6 +9,12 @@
 This project is a **Python web scraper** that downloads and processes results from the **2017 Czech Parliamentary Elections**.
 It retrieves data from the official election website [volby.cz](https://www.volby.cz/) and saves the results for all municipalities in a selected district into a **CSV file**, which you can open in Excel.
 
+##What it does##
+When you run the program, it:
+1. Takes a district URL from the Czech election site.
+2. Downloads results for all towns in that district.
+3. Saves everything into a CSV file (which you can open in Excel).
+
 The output file contains the following information for each municipality:
 - Town code
 - Town name
@@ -17,45 +23,61 @@ The output file contains the following information for each municipality:
 - Number of valid votes
 - Number of votes for each political party
 
-## How to Run the Program
-**Step 1: Open the command line (CMD or Terminal)**
-**Step 2: Go to the folder where your file is saved**
-For example:
-cd C:\Users\YourName\Documents\elections-scraper-2017
-**Step 3: Run this command**
-python main.py <URL> <output_file.csv>
-python main.py "https://www.volby.cz/pls/ps2017nss/ps311?xjazyk=CZ&xnumnuts=7101" "results_jesenik.csv"
-
-**Command Line Arguments**
-<URL> Link to the district overview page from volby.cz(do not use a single town page — it should be a list of towns).
-<output_file.csv> Name of the CSV file where results will be saved
-
-After the program finishes, you’ll see a message like:
-Data saved successfully to 'results_jesenik.csv'
-
-
-### Example Output
-After running the program, a CSV file is created — for example:
-**File name:** results_jesenik.csv
-**Structure of the file**:
-Code;Town;Registered;Envelopes;Valid;Občanská demokratická strana;...;ANO 2011;...
-523917;Bělá pod Pradědem;1546;945;938;77;...;331;...
-524891;Bernartice;703;344;343;24;...;149;...
-...
-
-Each row represents one municipality, and every political party appears as a separate column.
-You can open this file in Excel to view and analyze the results.
-
 ### What you need
 - Python 3 installed
-- The following libraries:
-	- requests
-	- beautifulsoup4
-in command prompt or terminalpip install requests beautifulsoup4
+- A code editor (like VS Code)
 
+##Step-by-step instructions##
+**Step 1: Download this project to your own computer so you can open and run it locally.**
+**Option 1: Download ZIP**
+1. Go to the project’s page on GitHub: [Election-Scraper-2017](https://github.com/mludvik2/elections-scraper-2017/tree/main)
+2. Find the green **“Code”** button near the top right.
+3. Click **“Download ZIP.”**
+4. A file like elections-scraper-2017.zip will download to your computer (usually in your Downloads folder).
+5. Right-click that ZIP file and choose **“Extract All…”** (Windows).
+6. You’ll now have a regular folder named elections-scraper-2017.
 
-main_3.py      # main program file
-README.md      # this documentation file
+Move that folder somewhere easy to find, such as: "C:\Users\YourName\Documents\elections-scraper-2017"
+
+**Option 2: Clone using Git**
+If you already have Git installed and know how to use the terminal, you can instead run:
+git clone https://github.com/mludvik2/elections-scraper-2017.git
+
+**Step 2: Open a terminal**
+Go to where you moved the file to eg. "C:\Users\YourName\Documents\elections-scraper-2017"
+Type in **"CMD"** where your file is listed and hit enter
+
+**Step 3: Create and activate a virtual environment**
+add in code separately:
+python -m venv .venv
+.venv\Scripts\activate
+
+You’ll see (.venv) at the start of your line — that means it’s active.
+
+**Step 4: Install the required packages**
+Run: pip install -r requirements.txt
+
+This installs the libraries the project needs (requests and beautifulsoup4).
+
+**Step 5: Run the Program**
+Use this command format:
+python main.py "<URL>" "<output_filename.csv>"
+
+For example:
+python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101" "results.csv"
+
+**Command Line Arguments**
+<URL> The first part is the election district URL (with many towns). Do not use a single town page — it should be a list of towns.
+<output_file.csv> The second part is the CSV file name you want to create.
+
+**Step 6: Wait for the scraper to finish**
+After the program finishes, you’ll see a message like:
+Data saved successfully to 'results.csv'
+
+**Step 7: Open the CSV file**
+You’ll find a file like **results.csv** in your project folder.
+Open it with Excel.
+Each row represents one municipality, and every political party appears as a separate column.
 
 ### Data Cleaning
 Before saving the results:
@@ -64,19 +86,11 @@ Before saving the results:
 - The CSV file uses the **semicolon (;)** as a delimiter for better compatibility with Excel
 - Czech characters are preserved using **utf-8-sig**
 
-### Ethical and Legal Notice
-- The scraper follows [volby.cz](https://www.volby.cz/)’s terms and robots.txt.**(Respect the website’s rules)**
-- It sends a small number of requests and includes respectful pauses between them if needed.
-- The scraped data comes from **publicly available election results** and is used strictly for **educational purposes**.
 
-### Requirements
-- Python 3.x
-- Installed libraries:
-	- requests
-	- beautifulsoup4
 
-#### Installation:
-pip install requests beautifulsoup4
+!!!add in links to other files
+
+
 
 ### Author
 **Michaela Papadimitriu Ludvikova**<br>
