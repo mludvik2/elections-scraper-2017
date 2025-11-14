@@ -11,8 +11,8 @@ It retrieves data from the official election website [volby.cz](https://www.volb
 
 ## Installation of required libraries<br>
 The libraries used for this code are saved in file: `requirement.txt`.  It is recommended to use a new virtual environment for installation and with the installed manager run as the following:<br>
-`$ pip3 --version			# confirmation of manager version<br>`
-`$ pip3 install -r requirements.txt	# installing libraries<br>`
+`$ pip3 --version			# confirmation of manager version`<br>
+`$ pip3 install -r requirements.txt	# installing libraries`<br>
 
 
 
