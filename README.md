@@ -12,8 +12,8 @@ It retrieves data from the official election website [volby.cz](https://www.volb
 ## Installation of required libraries<br>
 The libraries used in this project are listed in the `requirements.txt` file. It is recommended to install them inside a new virtual environment. After activating the environment, install the libraries using the following commands:<br>
 >```
-> $ pip3 --version                     # *checks that pip is installed and shows its version*
-> $ pip3 install -r requirements.txt   # *installs the libraries listed in requirements.txt*
+> $ pip3 --version                     *# checks that pip is installed and shows its version*
+> $ pip3 install -r requirements.txt   *# installs the libraries listed in requirements.txt*
 >```
 
 
