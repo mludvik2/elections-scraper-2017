@@ -7,7 +7,7 @@
 ## Project Description
 
 This project is a **Python web scraper** that downloads and processes results from the **2017 Czech Parliamentary Elections**.
-It retrieves data from the official election website [volby.cz](https://www.volby.cz/) and saves the results for all municipalities in a selected district into a **CSV file**, which you can open in Excel.
+It retrieves data from the official election website [volby.cz](https://www.volby.cz/pls/ps2017nss/ps3?xjazyk=CZ) and saves the results for all municipalities in a selected district into a **CSV file**, which you can open in Excel.
 
 ## What it does:<br>
 When you run the program, it:<br>
@@ -65,12 +65,12 @@ This installs the libraries the project needs (requests and beautifulsoup4).<br>
 Use this command format:<br>
 python main.py "district page URL" "output_filename.csv"<br>
 
-For example:<br>
-python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101" "results.csv"<br>
-
 **Command Line Arguments**<br>
-District page URL: The first part is the election district URL (with many towns). Do not use a single town page — it should be a list of towns.<br>
-Output_file.csv: The second part is the CSV file name you want to create.<br>
+**District page URL:** The first part is the election district URL **(with many towns)**. Do not use a single town page — it should be a list of towns.<br>
+**Output_file.csv:** The second part is the CSV file name you want to create.<br>
+
+For example:<br>
+python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101" "Jesenik_results.csv"<br>
 
 **Step 6: Wait for the scraper to finish**<br>
 After the program finishes, you’ll see a message like:<br>
@@ -88,7 +88,7 @@ Before saving the results:<br>
 - The CSV file uses the **semicolon (;)** as a delimiter for better compatibility with Excel<br>
 - Czech characters are preserved using **utf-8-sig**<br>
 
-###Notes<br>
+### Notes<br>
 - Use a district page URL (one that lists multiple towns), not a single-town page.<br>
 - The program scrapes responsibly — it makes a few requests, not too fast.<br>
 - Only public data is used (from official government pages).<br>
