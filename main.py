@@ -85,8 +85,6 @@ def scrape_town_results(url):
     Gets basic election results (registered, envelopes, valid, parties)
      from one town page.
     """
-    print(f"scraping:", {url})
-
     #download the page
     response = requests.get(url)
     if response.status_code != 200:
@@ -163,7 +161,7 @@ def save_to_csv(data, filename):
                 else:
                     row.append("0")
             writer.writerow(row)
-    print(f"Data saved successfully to '{filename}'")
+    print(f"Data saved successfully to: '{filename}'")
 
 if __name__ == "__main__":
     url, filename = parse_args(sys.argv)
@@ -179,7 +177,6 @@ if __name__ == "__main__":
      # Test: scrape first 3 towns only
     all_data = []
     for town in links:
-        print(f"{town['location']} ({town['code']})")
         result = scrape_town_results(town["link"])
 
         if result is not None:
@@ -194,7 +191,7 @@ if __name__ == "__main__":
             all_data.append(town_data)
                 
     save_to_csv(all_data, filename)
-    print(f"\n Saved {len(all_data)} towns to {filename}")
+    print("Exiting Election-Scraper-2017")
 
 
 

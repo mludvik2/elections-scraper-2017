@@ -9,6 +9,20 @@
 This project is a **Python web scraper** that downloads and processes results from the **2017 Czech Parliamentary Elections**.
 It retrieves data from the official election website [volby.cz](https://www.volby.cz/pls/ps2017nss/ps3?xjazyk=CZ) and saves the results for all municipalities in a selected district into a **CSV file**, which you can open in Excel.
 
+## Installation of required libraries<br>
+The libraries used for this code are saved in file: > requirement.txt. It is recommended to use a new virtual environment for installation and with the installed manager run as the following:
+> pip install -r requirements.txt<br>
+
+
+
+
+
+
+
+
+
+
+
 ## What it does:<br>
 When you run the program, it:<br>
 1. Takes a district URL from the Czech election site.<br>
@@ -92,10 +106,6 @@ Each row represents one municipality, and every political party appears as a sep
 - Use a district page URL (one that lists multiple towns), not a single-town page.<br>
 - The program scrapes responsibly — it makes a few requests, not too fast.<br>
 - Only public data is used (from official government pages).<br>
-
-!!!add in links to other files
-
-
 
 ### Author<br>
 **Michaela Papadimitriu Ludvikova**<br>
