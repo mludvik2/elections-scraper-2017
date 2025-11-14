@@ -38,16 +38,17 @@ def download_page(url):
 
     if call_server.status_code != 200:
         print("Error: Cannot download code.")
-        sys.exit()
+        sys.exit(1)
 
     return call_server.text
 
 def find_all_links(html, base_url):
     """Finds all municipal rows in the main table
     and returns a list of dictionaries with code, location and link.
+    Skips first 2 header rows.
     """
     soup = BeautifulSoup(html, "html.parser")
-    rows = soup.find_all("tr")[2:] # skip first 2 header rows
+    rows = soup.find_all("tr")[2:]
 
     all_links = []
 
@@ -68,7 +69,6 @@ def find_all_links(html, base_url):
                     "link": full_link
             })
 
-    
     return all_links
 
 def scrape_town_results(url):
@@ -106,7 +106,7 @@ def scrape_town_results(url):
                 if party_name and party_name[0].isalpha():
                     parties[party_name] = votes
 
-    return{
+    return {
         "registered": registered,
         "envelopes": envelopes,
         "valid": valid,
@@ -114,7 +114,8 @@ def scrape_town_results(url):
     }
 
 def save_to_csv(data, filename):
-    """Save results to a CSV file.
+    """Save results to a CSV file using utf-8-sig and semicolon 
+    delimiter for for Excel/Czech locales
     """
     all_parties = []
     for town in data:
@@ -122,7 +123,6 @@ def save_to_csv(data, filename):
             if party not in all_parties:
                 all_parties.append(party)
 
-    #create csv header
     header = ["Code", "Town", "Registered", "Envelopes", "Valid"] + all_parties
 
     with open(filename, "w", newline="", encoding="utf-8-sig") as f:
