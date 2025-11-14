@@ -76,12 +76,12 @@ python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumn
 After the program finishes, you’ll see a message like:<br>
 Data saved successfully to 'Jesenik_results.csv'<br>
 
-**Step 7: Open the CSV file**<br>
-You’ll find a file like **Jesenik_results.csv** in your project folder.<br>
+**Example CSV file:** [Jesenik_results.csv](https://github.com/mludvik2/elections-scraper-2017/blob/main/Jesenik_results.csv)<br>
+
+**Step 7: Open the CSV file you have run**<br>
 Open it with Excel.<br>
 Each row represents one municipality, and every political party appears as a separate column.<br>
 
-Example file: [Jesenik_results.csv](
 ### Data Cleaning<br>
 - Extra spaces in numbers (e.g. 1 546) are automatically removed → 1546<br>
 - Missing values for a party are replaced by "0"<br>
