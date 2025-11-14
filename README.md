@@ -27,25 +27,27 @@ The program will download the results with a suffix `.csv `.
 ## An example of the project
 The voting results for town of Jesenik:
 1. argument: `https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101`
-2. argument: `jesenik_results`
+2. argument: `Jesenik_results`
 
 Run program:
 >```
-> python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101" "jesenik_results.csv"
+> python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101" "Jesenik_results.csv"
 >```
 
 Download progress:
 >```
 > Downloading data from : https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101
-> Data saved successfully to: 'jesenik_results.csv'
+> Data saved successfully to: 'Jesenik_results.csv'
 > Exiting Election-Scraper-2017 program
 >```
 
 Partial output:
-
-
-
-
+>```
+﻿> Code;Town;Registered;Envelopes;Valid;...
+> 523917;Bělá pod Pradědem;1546;945;938;77;1;0;47;2;53;70;8;12;10;0;1;79;1;33;331;0;3;42;0;7;0;1;158;2
+> 524891;Bernartice;703;344;343;24;0;0;25;1;6;38;1;1;1;0;0;15;0;5;149;2;1;13;1;0;1;1;58;0
+> ...
+>```
 
 
 
