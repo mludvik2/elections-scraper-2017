@@ -38,7 +38,7 @@ def parse_args(argv):
 
 def download_page(url):
     """Downloads and returns the HTML of the given URL."""
-    print("Downloading data from :", url)
+    print("DOWNLOADING DATA FROM: ", url)
     call_server = requests.get(url)
 
     if call_server.status_code != 200:
@@ -161,7 +161,7 @@ def save_to_csv(data, filename):
                 else:
                     row.append("0")
             writer.writerow(row)
-    print(f"Data saved successfully to: '{filename}'")
+    print(f"DATA SAVED SUCCESSFULLY TO: '{filename}'")
 
 if __name__ == "__main__":
     url, filename = parse_args(sys.argv)
@@ -191,7 +191,7 @@ if __name__ == "__main__":
             all_data.append(town_data)
                 
     save_to_csv(all_data, filename)
-    print("Exiting Election-Scraper-2017 program")
+    print("EXITING Election-Scraper-2017")
 
 
 
