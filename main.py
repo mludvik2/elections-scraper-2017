@@ -1,9 +1,3 @@
-#Ethical reminder
-#Check and respect the site’s robots.txt.
-#Don’t send too many requests too fast.
-#Data from public elections is open, but you should scrape responsibly.
-
-
 """project_3.py: 
 third project for Engeto Online Python Academy
 
@@ -37,7 +31,8 @@ def parse_args(argv):
     return url, filename
 
 def download_page(url):
-    """Downloads and returns the HTML of the given URL."""
+    """Downloads and returns the HTML of the given URL.
+    """
     print("DOWNLOADING DATA FROM: ", url)
     call_server = requests.get(url)
 
@@ -48,9 +43,8 @@ def download_page(url):
     return call_server.text
 
 def find_all_links(html, base_url):
-    """
-    Finds all municipal rows in the main table
-    and returns a list of dictionaries with code, location and link
+    """Finds all municipal rows in the main table
+    and returns a list of dictionaries with code, location and link.
     """
     soup = BeautifulSoup(html, "html.parser")
     rows = soup.find_all("tr")[2:] # skip first 2 header rows
@@ -77,24 +71,16 @@ def find_all_links(html, base_url):
     
     return all_links
 
-#Base URL to build full links
-
-# Send request and parse HTML
 def scrape_town_results(url):
-    """
-    Gets basic election results (registered, envelopes, valid, parties)
+    """Gets basic election results (registered, envelopes, valid, parties)
      from one town page.
     """
-    #download the page
     response = requests.get(url)
     if response.status_code != 200:
         print("Error loading page:", url)
         return None
     
-    #parse the page
     soup = BeautifulSoup(response.text, "html.parser")
-    #find numbers of voters, envelopes, valid votes
-    #these are inside <td> cells on the first table
     tables = soup.find_all("table")
     first_table = tables[0]
     all_td = first_table.find_all("td")
@@ -107,12 +93,10 @@ def scrape_town_results(url):
         print("Warning: could not read vote summary for ", url)
         return None
 
-    #Find all political parties and their votes
-
     parties = {}
     party_tables = soup.find_all("table", {"class": "table"})
     for table in party_tables:
-        rows = table.find_all("tr")[2:]  #skip 2 header rows
+        rows = table.find_all("tr")[2:]
         for row in rows:
             cells = row.find_all("td")
             if len(cells) >= 3:
@@ -122,7 +106,6 @@ def scrape_town_results(url):
                 if party_name and party_name[0].isalpha():
                     parties[party_name] = votes
 
-    #return the results as a dictionary
     return{
         "registered": registered,
         "envelopes": envelopes,
@@ -130,10 +113,9 @@ def scrape_town_results(url):
         "parties": parties
     }
 
-#save everything to csv
 def save_to_csv(data, filename):
-    """Save results to a CSV file"""
-    #get all the unique party names across all towns
+    """Save results to a CSV file.
+    """
     all_parties = []
     for town in data:
         for party in town["parties"].keys():
@@ -166,15 +148,9 @@ def save_to_csv(data, filename):
 if __name__ == "__main__":
     url, filename = parse_args(sys.argv)
     base_url = "https://www.volby.cz/pls/ps2017nss/" 
-    
-   
-    #download page
     html = download_page(url)
-    #find links
     links = find_all_links(html, base_url)
-    
 
-     # Test: scrape first 3 towns only
     all_data = []
     for town in links:
         result = scrape_town_results(town["link"])
