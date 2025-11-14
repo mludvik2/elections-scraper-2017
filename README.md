@@ -18,9 +18,9 @@ The libraries used in this project are listed in the `requirements.txt` file. It
 
 ## Run the Program<br>
 Run the program `main.py` in the command line using 2 mandatory arguments:<br>
->```
-> python main.py <district page URL> <output_filename>
->```
+```
+python main.py <district page URL> <output_filename>
+```
 
 The program will download the results with a suffix `.csv `.
 
@@ -35,11 +35,11 @@ Run program:
 >```
 
 Download progress:
->```
-> DOWNLOADING DATA FROM:  https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101
-> DATA SAVED SUCCESSFULLY TO: 'Jesenik_results.csv'
-> EXITING Election-Scraper-2017
->```
+```
+DOWNLOADING DATA FROM:  https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101
+DATA SAVED SUCCESSFULLY TO: 'Jesenik_results.csv'
+EXITING Election-Scraper-2017
+```
 
 Partial output:
 ```
