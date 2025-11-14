@@ -16,24 +16,32 @@ The libraries used in this project are listed in the `requirements.txt` file. It
 > $ pip3 install -r requirements.txt   # installs the libraries listed in requirements.txt
 >```
 
-## Run the Program**<br>
+## Run the Program<br>
 Run the program `main.py` in the command line using 2 mandatory arguments:<br>
 >```
 > python main.py <district page URL> <output_filename>
 >```
 
-The program will download the results saving with a suffix `.csv `.
+The program will download the results with a suffix `.csv `.
 
 ## An example of the project
 The voting results for town of Jesenik:
 1. argument: `https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101`
-2. argument: `Jesenik_results`
+2. argument: `jesenik_results`
 
 Run program:
 >```
-> python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101" "Jesenik_results.csv"
+> python main.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101" "jesenik_results.csv"
 >```
 
+Download progress:
+>```
+> Downloading data from : https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7101
+> Data saved successfully to: 'jesenik_results.csv'
+> Exiting Election-Scraper-2017 program
+>```
+
+Partial output:
 
 
 

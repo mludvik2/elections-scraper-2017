@@ -191,7 +191,7 @@ if __name__ == "__main__":
             all_data.append(town_data)
                 
     save_to_csv(all_data, filename)
-    print("Exiting Election-Scraper-2017")
+    print("Exiting Election-Scraper-2017 program")
 
 
 
