@@ -1,18 +1,20 @@
-# Czech Election Results Scraper
+# Czech Election Results Scraper<br>
 
 **Author:** Michaela Papadimitriu Ludvikova<br> 
 **Email:** mludvik2@yahoo.com<br>
 **Course:** Engeto Online Python Academy — Project 3<br> 
 
-## Project Description
+## Project Description<br>
 
 This project is a **Python web scraper** that downloads and processes results from the **2017 Czech Parliamentary Elections**.
 It retrieves data from the official election website [volby.cz](https://www.volby.cz/pls/ps2017nss/ps3?xjazyk=CZ) and saves the results for all municipalities in a selected district into a **CSV file**, which you can open in Excel.
 
 ## Installation of required libraries<br>
-The libraries used for this code are saved in file: >requirement.txt. It is recommended to use a new virtual environment for installation and with the installed manager run as the following:
-> $ pip3 --version			# confirmation of manager version
-> $ pip3 install -r requirements.txt	# installing libraries
+The libraries used for this code are saved in file:<br>
+> requirement.txt.
+ It is recommended to use a new virtual environment for installation and with the installed manager run as the following:<br>
+> $ pip3 --version			# confirmation of manager version<br>
+> $ pip3 install -r requirements.txt	# installing libraries<br>
 
 
 
