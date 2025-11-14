@@ -10,10 +10,10 @@ This project is a **Python web scraper** that downloads and processes results fr
 It retrieves data from the official election website [volby.cz](https://www.volby.cz/pls/ps2017nss/ps3?xjazyk=CZ) and saves the results for all municipalities in a selected district into a **CSV file**, which you can open in Excel.
 
 ## Installation of required libraries<br>
-The libraries used for this code are saved in file: `requirement.txt`.  It is recommended to use a new virtual environment for installation and with the installed manager run as the following:<br>
+The libraries used in this project are listed in the `requirements.txt` file. It is recommended to install them inside a new virtual environment. After activating the environment, install the libraries using the following commands:<br>
 >```
-> $ pip3 --version                     # confirmation of manager version`
-> $ pip3 install -r requirements.txt   # installing libraries`
+> $ pip3 --version                     # *checks that pip is installed and shows its version*
+> $ pip3 install -r requirements.txt   # *installs the libraries listed in requirements.txt*
 >```
 
 
